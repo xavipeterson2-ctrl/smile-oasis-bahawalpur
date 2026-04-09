@@ -2,14 +2,21 @@ import { Camera } from "lucide-react";
 import heroImg from "@/assets/hero-dental.jpg";
 import clinicImg from "@/assets/clinic-interior.jpg";
 import equipImg from "@/assets/clinic-equipment.jpg";
+import receptionImg from "@/assets/gallery-reception.jpg";
+import treatmentImg from "@/assets/gallery-treatment.jpg";
+import smileImg from "@/assets/gallery-smile.jpg";
+import xrayImg from "@/assets/gallery-xray.jpg";
+import sterilizationImg from "@/assets/gallery-sterilization.jpg";
 
 const images = [
   { src: heroImg, alt: "Modern dental treatment room" },
-  { src: clinicImg, alt: "Clinic waiting area" },
-  { src: equipImg, alt: "Sterilized dental equipment" },
-  { src: heroImg, alt: "Dental clinic interior" },
-  { src: clinicImg, alt: "Reception area" },
-  { src: equipImg, alt: "Treatment tools" },
+  { src: clinicImg, alt: "Comfortable waiting area" },
+  { src: equipImg, alt: "Sterilized dental instruments" },
+  { src: receptionImg, alt: "Clinic reception desk" },
+  { src: treatmentImg, alt: "Dental treatment in progress" },
+  { src: smileImg, alt: "Happy patient with beautiful smile" },
+  { src: xrayImg, alt: "Digital X-ray diagnostic room" },
+  { src: sterilizationImg, alt: "Sterilization and hygiene area" },
 ];
 
 const GallerySection = () => (
@@ -25,7 +32,7 @@ const GallerySection = () => (
           <span className="text-sm">21+ Photos</span>
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images.map((img, i) => (
           <div key={i} className="rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow group">
             <img
