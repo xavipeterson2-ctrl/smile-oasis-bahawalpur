@@ -23,14 +23,27 @@ const treatments = [
 const AppointmentSection = () => {
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const formData = new FormData(e.currentTarget);
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      });
+      if (response.ok) {
+        toast.success("Appointment request sent! We will contact you shortly.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error("Something went wrong. Please try again or call us directly.");
+      }
+    } catch {
+      toast.error("Network error. Please try again or call us directly.");
+    } finally {
       setLoading(false);
-      toast.success("Appointment request sent! We will contact you shortly.");
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+    }
   };
 
   return (
@@ -45,7 +58,11 @@ const AppointmentSection = () => {
             Fill in the form below and our team will contact you shortly to confirm your appointment.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className="p-6 md:p-8 rounded-2xl bg-card border border-border shadow-card space-y-5">
+        <form name="appointment" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="p-6 md:p-8 rounded-2xl bg-card border border-border shadow-card space-y-5">
+          <input type="hidden" name="form-name" value="appointment" />
+          <p style={{ display: "none" }}>
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
           <div className="grid sm:grid-cols-2 gap-4">
             <Input placeholder="Your Name" required name="name" maxLength={100} />
             <Input placeholder="Phone Number" required name="phone" type="tel" maxLength={20} />

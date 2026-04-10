@@ -47,7 +47,7 @@ const ContactSection = () => (
         <div className="rounded-2xl overflow-hidden border border-border shadow-card min-h-[320px]">
           <iframe
             title="Specialist Dental Clinic Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.7!2d71.6836!3d29.3956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSatellite+Town+Bahawalpur!5e0!3m2!1sen!2spk!4v1"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.7890123456!2d71.68360000000001!3d29.395600000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b90052a3e6d7b%3A0x7c8e3e7f1a2b3c4d!2sSatellite%20Town%2C%20Bahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2spk!4v1700000000000"
             width="100%"
             height="100%"
             style={{ border: 0, minHeight: 320 }}
